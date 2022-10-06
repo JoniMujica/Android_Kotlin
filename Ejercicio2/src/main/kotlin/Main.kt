@@ -5,7 +5,7 @@ fun main() {
     CobraryDevolver(sumatoriaCobro(Val_golosinas))
 }
 fun Menu(golosinas:Array<String>,precios:IntArray){
-    println("======================MENU DE COMPRAS, Seleccione un producto=================")
+    println("======================MENU DE COMPASS, Seleccione un producto=================")
     for (i in golosinas.indices){
         println("${i+1}-${golosinas[i]} -> $${precios[i]}")
     }
@@ -18,10 +18,10 @@ fun sumatoriaCobro(precios:IntArray):Int{
         num = inputInt();
         if (ExisteProducto(num) && num != 0){
             total += precios[num-1]
-            println("Total a pagar: ${total}")
+            println("Total a pagar: $${total}")
         }
     }while (num != 0 || !ExisteProducto(num))
-
+2
     return total;
 }
 
@@ -55,15 +55,13 @@ fun CobraryDevolver(total:Int){
  * Esta funcion sirve para obtener el billete mas alto a devolver de forma ordenada
  *
  * @param faltante es la cantidad de vuelto restante para llegar a cero
- * @return devuelve el billete mas alto cuyo diferencia difiere de cero
+ * @return devuelve el billete mas alto cuyo diferencia con faltante es mayor a cero
  */
 fun BVuelto(faltante:Int):Int{
-    //var b:Int = 0;
+
     var billetes:IntArray = intArrayOf(100,50,20,10,5,2,1);
     for (i in billetes.indices){
         if (faltante-billetes[i]>=0){
-            /*b = billetes[i]*/
-            //println("Vuelto billete -> $${billetes[i]}")
             return billetes[i];
         }
     }
