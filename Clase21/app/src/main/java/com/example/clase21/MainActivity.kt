@@ -24,8 +24,12 @@ class MainActivity : AppCompatActivity() {
         boton.setOnClickListener {
             val num1 = et_num1.text.toString().toInt()
             val num2 = et_num2.text.toString().toInt()
-            tvResultado.text = "La suma es = ${num1 + num2}"*/
-
-
+            tvResultado.text = "La suma es = ${num1 + num2}" */
+        binding.btnCalcular.setOnClickListener {
+            val num1 = binding.etNum1.text.toString().toInt()
+            val num2 = binding.etNum2.text.toString().toInt()
+            binding.tvResultado.text = "La suma es = ${num1+num2}"
         }
+
+    }
 }
