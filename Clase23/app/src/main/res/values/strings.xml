@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale = "es">
+    <!--esta es una linea de comentarios en XML-->
+    <!--la linea del resources indica que el idioma por defecto de la app es español "es" -->
+    <string name="app_name">Clase23</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_borrar">Borrar</string>
+    <string name="btn_actualizar">Actualizar</string>
+    <string name="btn_limpiar">Limpiar</string>
+</resources>

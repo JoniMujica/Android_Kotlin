@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clase23</string>
+    <string name="btn_guardar">Save</string>
+    <string name="btn_borrar">Delete</string>
+    <string name="btn_actualizar">Update</string>
+    <string name="btn_limpiar">Clear</string>
+</resources>
