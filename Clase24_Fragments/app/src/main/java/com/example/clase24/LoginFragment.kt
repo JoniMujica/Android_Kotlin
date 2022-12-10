@@ -1,10 +1,14 @@
 package com.example.clase24
 
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.clase24.databinding.FragmentLoginBinding
 
 
@@ -12,6 +16,9 @@ class LoginFragment : Fragment() {
 
     private var _binding : FragmentLoginBinding?  = null
     private val binding get() = _binding!!
+
+    private var user = "pepito"
+    private var pass = "1234"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,6 +30,9 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentLoginBinding.inflate(inflater,container,false)
+        binding.btnLogin.setOnClickListener { validarIdentidad()
+            vaciarCasilleros()
+            ocultarTeclado()}
         return binding.root
     }
 
@@ -30,6 +40,22 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    private fun validarIdentidad(){
+        if (binding.etUser.text.toString().equals(user) && binding.etPass.text.toString().equals(pass)){
+            Toast.makeText(context,"Bienvenido",Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(context,"Revise sus credenciales",Toast.LENGTH_LONG).show()
+        }
+    }
 
+    private fun vaciarCasilleros(){
+        binding.etUser.setText("")
+        binding.etPass.setText("")
+        binding.etUser.requestFocus()
+    }
+    private fun ocultarTeclado(){
+        val imm : InputMethodManager = activity?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.etPass.windowToken,0)
+    }
 
 }
