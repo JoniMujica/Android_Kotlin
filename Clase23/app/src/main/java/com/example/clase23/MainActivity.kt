@@ -3,6 +3,7 @@ package com.example.clase23
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.widget.Toast
 import com.example.clase23.databinding.ActivityMainBinding
 
@@ -26,6 +27,17 @@ class MainActivity : AppCompatActivity() {
             putExtra(SecondActivity.KEY_MESSAGE, "$contador")
         }
         startActivity(intent)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("contador",contador)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        contador = savedInstanceState.getInt("contador")
+        binding.tvContador.text = "Usted presiono el boton $contador veces"
     }
     private fun contar(){
         contador++
