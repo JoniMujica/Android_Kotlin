@@ -21,7 +21,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait"> <!--Bloque la giro de pantalla de la app en esa activity-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
