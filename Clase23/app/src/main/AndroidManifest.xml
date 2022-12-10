@@ -22,7 +22,12 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"> <!--Bloque la giro de pantalla de la app en esa activity-->
+            android:configChanges="orientation|screenSize">  <!-- Bloqueo los cambios de ciclo para que no se reinicie los valores-->
+
+             <!--android:screenOrientation="portrait"--> <!--Bloque la giro de pantalla de la app en esa activity-->
+
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
