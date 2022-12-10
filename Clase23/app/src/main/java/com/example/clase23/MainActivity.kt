@@ -19,7 +19,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun irOtraActividad() {
-        var intent = Intent(this, SecondActivity::class.java)
+        var intent = Intent(this, SecondActivity::class.java).apply {
+            putExtra(SecondActivity.KEY_MESSAGE, "$contador")
+        }
         startActivity(intent)
     }
     private fun contar(){
