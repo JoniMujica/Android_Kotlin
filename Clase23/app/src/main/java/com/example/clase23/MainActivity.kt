@@ -7,7 +7,7 @@ import com.example.clase23.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
-
+    private var contador = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -15,10 +15,15 @@ class MainActivity : AppCompatActivity() {
         binding.btnCambiar.setOnClickListener {
             irOtraActividad()
         }
+        binding.btncontar.setOnClickListener { contar() }
     }
 
     private fun irOtraActividad() {
         var intent = Intent(this, SecondActivity::class.java)
         startActivity(intent)
+    }
+    private fun contar(){
+        contador++
+        binding.tvContador.text = "Usted presiono el boton $contador veces"
     }
 }
