@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.clase25gatitosfragment.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), GatitosFragment.GatitosListener {
     private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,5 +18,9 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(binding.layoutPadre.id,fragment)
         fragmentTransaction.commit()
+    }
+
+    override fun onClickPhoto(url: String) {
+
     }
 }

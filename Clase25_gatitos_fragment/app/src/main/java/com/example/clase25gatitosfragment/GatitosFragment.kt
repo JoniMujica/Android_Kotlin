@@ -1,5 +1,6 @@
 package com.example.clase25gatitosfragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,9 @@ import com.squareup.picasso.Picasso
 
 class GatitosFragment : Fragment() {
 
+    private var listener : GatitosListener?= null
+
+
     private var _binding : FragmentGatitosBinding? = null
     private val binding get() = _binding!!
 
@@ -19,6 +23,11 @@ class GatitosFragment : Fragment() {
     val foto2 = "https://placekitten.com/300/300"
     val foto3 = "https://placekitten.com/400/300"
     val foto4 = "https://placekitten.com/300/400"
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as GatitosListener
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +41,11 @@ class GatitosFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentGatitosBinding.inflate(inflater,container,false)
         loadImages()
+        binding.imgFoto1.setOnClickListener { listener!!.onClickPhoto(foto1) }
+        binding.imgFoto2.setOnClickListener { listener!!.onClickPhoto(foto2) }
+        binding.imgFoto3.setOnClickListener { listener!!.onClickPhoto(foto3) }
+        binding.imgFoto4.setOnClickListener { listener!!.onClickPhoto(foto4) }
+
         return binding.root
     }
 
@@ -46,6 +60,10 @@ class GatitosFragment : Fragment() {
         Picasso.get().load(foto3).into(binding.imgFoto3)
         Picasso.get().load(foto4).into(binding.imgFoto4)
 
+    }
+
+    interface GatitosListener{
+        fun onClickPhoto(url:String)
     }
 
 }
