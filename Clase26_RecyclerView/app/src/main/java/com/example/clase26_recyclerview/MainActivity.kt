@@ -13,5 +13,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.mainRecycler.layoutManager = LinearLayoutManager(this)
+
+        binding.mainRecycler.adapter = NumberAdapter(getNumberList())
+    }
+
+    private fun getNumberList():List<Int>{
+        var numberList = mutableListOf<Int>()
+        for (i in 1 .. 100) numberList.add(i)
+        return numberList
+
     }
 }
