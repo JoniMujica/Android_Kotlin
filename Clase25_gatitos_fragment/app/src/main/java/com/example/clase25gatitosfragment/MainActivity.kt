@@ -17,10 +17,12 @@ class MainActivity : AppCompatActivity(), GatitosFragment.GatitosListener {
     private fun loadFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(binding.layoutPadre.id,fragment)
+        fragmentTransaction.addToBackStack(null) //con esto bloqueo que al apretar el boton "atras o volver" del celular,  se cierre la app
         fragmentTransaction.commit()
     }
 
     override fun onClickPhoto(url: String) {
-
+        val dellaFragment = DetalleFragment.newInstance(url)
+        loadFragment(dellaFragment)
     }
 }
